@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="content-language" content="zh-CN"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content="杭州博采网络科技股份有限公司-http://www.bocweb.cn"/>
+    <meta name="renderer" content="webkit">
+    <title>刮刮乐</title>
+    <link href="favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="public/public.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/swiper.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/order.css">
+    <script src="public/dists.js"></script>
+    <script src="public/public.js"></script>
+    <script src="public/c_main.js"></script>
+    <script src="public/swiper.min.js"></script>
+    <script src="public/adaptive-version2.js"></script>
+    <script>
+        // 设计图宽度
+        window['adaptive'].desinWidth = 750;
+        // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+        window['adaptive'].baseFont = 12;
+        // 初始化
+        window['adaptive'].init();
+    </script>
+    <style>
+        .list-wrap dl li{
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body class="gray-bg">
+    <div id="main" v-cloak class="padb0">
+        <div class="order-wrap">
+            <div class="top-type f-cb type-two">
+                <span :class="type==1?'cur':''" @click="type=1,viewAjax(),pageNo=1">已赠送</span>
+                <span :class="type==2?'cur':''" @click="type=2,viewAjax(),pageNo=1">已收到</span>
+            </div>
+            <div class="list-wrap">
+                <dl v-for="dl in list" v-show="type==1">
+                    <dd>
+                        <p class="num-box" v-show="dl.stat == 0">已结束</p>
+                        <p class="num-box" v-show="dl.stat == 1">赠送中</p>
+                        <ul>
+                            <li>
+                                <a :href="'order_sendinfo.html?id='+dl.oid" v-show="type==1">
+                                    <span class="fl img"><img :src="dl.thumbnail" alt=""></span>
+                                    <div class="fl cont">
+                                        <p class="tit">{{dl.gname}}</p>
+                                        <div class="msg">
+                                            <p class="f-cb">
+                                                <span class="fl">{{dl.cname}}</span>
+                                                <span class="line fl"></span>
+                                                <span class="fl">赠送数量 {{dl.totalNumber}}</span>
+                                            </p>
+                                            <p>截止时间：{{dl.date}}</p>
+                                            <!-- <p>商品编号：{{dl.thirdPartyNo}}</p> -->
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl v-for="dl in list" v-show="type==2">
+                    <dd>
+                        <p class="num-box">已收到</p>
+                        <ul>
+                            <li>
+                                <a :href="'order_info.html?id='+dl.oid" v-show="type==2">
+                                    <span class="fl img"><img :src="dl.thumbnail" alt=""></span>
+                                    <div class="fl cont">
+                                        <p class="tit">{{dl.gname}}</p>
+                                        <div class="msg">
+                                            <p class="f-cb">
+                                                <span class="fl">{{dl.cname}}</span>
+                                                <span class="line fl"></span>
+                                                <span class="fl">截止时间 {{dl.date}}</span>
+                                            </p>
+                                            <!-- <p>收到数量：{{dl.totalNumber}}</p> -->
+                                            <p>商品编号：{{dl.thirdPartyNo}}</p>
+                                        </div>
+                                    </div>
+                                    <span class="fr user-font">
+                                        <p>{{dl.nickName}}</p>
+                                        <p>赠送</p>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+                <div class="noorder-sign" v-show="list.length==0"><img src="img/img_11.png" alt=""></div>
+                <!-- <dl>
+                    <dd>
+                        <p class="num-box">已收到</p>
+                        <ul>
+                            <li>
+                                <a href="order_info.html">
+                                    <span class="fl img"><img src="img/img_06.png" alt=""></span>
+                                    <div class="fl cont">
+                                        <p class="tit">刮刮乐 - 十全十美</p>
+                                        <div class="msg">
+                                            <p class="f-cb">
+                                                <span class="fl">分类1</span>
+                                                <span class="line fl"></span>
+                                                <span class="fl">截止时间 2019.12.31</span>
+                                            </p>
+                                            <p>商品编号：201710135213</p>
+                                        </div>
+                                    </div>
+                                    <span class="fr user-font">
+                                        <p>送*玉</p>
+                                        <p>赠送</p>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl> -->
+            </div>
+            <div class="loadmore" v-show="readmore"><div class="loader"></div></div>
+        </div>
+        <a class="return-home" href="index.html"></a>
+    </div>
+    <script src="public/main.js"></script>
+    <script src="js/order_send.js"></script>
+</body>
+</html>

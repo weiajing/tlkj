@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="content-language" content="zh-CN"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content="杭州博采网络科技股份有限公司-http://www.bocweb.cn"/>
+    <meta name="renderer" content="webkit">
+    <title>刮刮乐</title>
+    <link href="favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="public/public.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/swiper.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/share_info.css">
+    <script src="public/dists.js"></script>
+    <script src="public/public.js"></script>
+    <script src="public/c_main.js"></script>
+    <script src="public/swiper.min.js"></script>
+    <script src="public/adaptive-version2.js"></script>
+    <script>
+        // 设计图宽度
+        window['adaptive'].desinWidth = 750;
+        // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+        window['adaptive'].baseFont = 12;
+        // 初始化
+        window['adaptive'].init();
+    </script>
+</head>
+<body class="gray-bg">
+    <div id="main" v-cloak class="padb0">
+        <div class="share-info">
+            <div class="top-main">
+                <h4 v-show="type==1">收到来自好友的一份刮奖邀请</h4>
+                <h4 v-show="type==2">收到来自好友的一份中奖消息</h4>
+                <span class="sign-pic"><img src="img/img_10.png" alt=""></span>
+            </div>
+            <div class="titbox">
+                <span class="line line1"></span>
+                刮奖区域
+                <span class="line line2"></span>
+            </div>
+            <div class="img-tabtit f-cb" v-show="imgshow">
+                <span :class="imgshowindex == 1? 'on' : ''" @click="imgshowindex=1">刮奖前</span>
+                <span :class="imgshowindex == 2? 'on' : ''" @click="imgshowindex=2">刮奖后</span>
+                <a href="http://jl.uplottery.com.cn/e/action/ListInfo/?classid=232">至福彩中心验证本张彩票</a>
+            </div>
+            <div class="prized-box result-pic-show" v-show="stat == 3">
+                <div class="img-tab" v-show="imgshowindex==1">
+                    <img v-show="imgshow" :src="img1" alt="">
+                </div>
+                <div class="img-tab" v-show="imgshowindex==2">
+                    <img v-show="imgshow" :src="img2" alt="">
+                </div>
+            </div>
+            <div class="prize-box" id="prize-main">
+                <div class="canvas" id="center" v-show="canvasShow && type != 2">
+                    <canvas id="c1" width="321" height="118"></canvas>
+                </div>
+                <div class="get-box" v-show="raffleing==false && stat == 1">
+                    <span class="word">
+                        收到好友分享的刮彩邀请，如果中奖，奖金会汇至好友账户
+                    </span>
+                    <div class="btn-box">
+                        <a class="btn" href="javascript:;" @click="getscratch(1)">点我刮奖</a>
+                        <a class="btn" :href="'pro_info.html?id='+pid">我也要买</a>
+                    </div>
+                </div>
+                <div class="prizing-box" v-show="raffleing && stat == 0">
+                    <p class="tit">待揭晓</p>
+                    <span class="word">正在执行刮奖操作，请等待...</span>
+                    <div class="btn-box">
+                        <!-- <a class="btn" href="javascript:;" @click="buyAgain()">再来一张</a>
+                        <a class="btn" href="product.html">换种彩票试试</a> -->
+                    </div>
+                </div>
+                <div class="prizing-box" v-show="stat == 2">
+                    <p class="tit">待揭晓</p>
+                    <span class="word">正在执行刮奖操作，请稍后查看</span>
+                </div>
+                <!-- <div class="prizing-box" v-show="stat == 1">
+                    <p class="tit">非常抱歉</p>
+                    <span class="word">由于网络原因刮奖失败，请重新刮奖</span>
+                    <div class="btn-box">
+                        <a class="btn" @click="getscratch(1)" href="javascript:;">重新刮奖</a>
+                    </div>
+                </div> -->
+                <div class="prized-box" v-show="stat == 3">
+                    <div class="out-cont">
+                        <p class="cent-tit cent" v-show="bonus">恭喜您！本张彩票中奖{{bonus>10000?(bonus/10000).toFixed(0)+' 万元':bonus+'元'}}</p>
+                        <p class="cent-tit" v-show="!bonus"></p>
+                        <div class="btn-box" v-show="type==2">
+                            <a class="btn" href="index.html">我也要买</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="prized-box graybg" v-show="stat == 4">
+                    <div class="out-cont">
+                        <p class="cent-tit cent">谢谢惠顾</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="return-home" href="index.html"></a>
+    </div>
+    <script src="public/main.js"></script>
+    <script src="js/share_info.js"></script>
+    <script src="js/canvas2.js"></script>
+</body>
+</html>

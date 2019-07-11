@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="content-language" content="zh-CN"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content="杭州博采网络科技股份有限公司-http://www.bocweb.cn"/>
+    <meta name="renderer" content="webkit">
+    <title>刮刮乐</title>
+    <link href="favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="public/public.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/swiper.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/send.css">
+    <script src="public/dists.js"></script>
+    <script src="public/public.js"></script>
+    <script src="public/c_main.js"></script>
+    <script src="public/swiper.min.js"></script>
+    <script src="public/adaptive-version2.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script>
+        // 设计图宽度
+        window['adaptive'].desinWidth = 750;
+        // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+        window['adaptive'].baseFont = 12;
+        // 初始化
+        window['adaptive'].init();
+    </script>
+</head>
+<body class="gray-bg">
+    <div id="main" v-cloak class="padb0">
+        <div class="send-wrap">
+            <div class="nav-wrap">
+                <a class="link-box" :href="'send.html?id='+branchGoodsIdStr">单人赠送<span></span></a>
+                <a class="link-box hover" :href="'send_more.html?id='+branchGoodsIdStr">多人赠送<span></span></a>
+            </div>
+            <div class="cent-main">
+                <div class="top-msg">
+                    <span class="avatar-box"><img :src="info.thumbnail" alt=""></span>
+                    <p class="tit">{{info.gname}}</p>
+                </div>
+                <div class="form-inp">
+                    <ul>
+                        <li>
+                            <span class="fl tit">赠送人数</span>
+                            <input class="fr tex" type="number" value="1" v-model="peopleNumberStr">
+                        </li>
+                        <li>
+                            <span class="fl tit">每人限领数量</span>
+                            <span class="fr unit">张</span>
+                            <input class="fr tex num" type="number" value="1" v-model="numberStr">
+                        </li>
+                        <li>
+                            <span class="fl tit">截止领取时间</span>
+                            <span class="fr unit">分钟</span>
+                            <input class="fr tex date" type="text" v-model="timeStr">
+                        </li>
+                    </ul>
+                </div>
+                <div class="tips-word">
+                    <p>温馨提示：</p>
+                    <p>彩票的接受方必须在领取时间内领取彩票，超时则无法领取，超过领取时间后，未领取的彩票会返还至您的账号；</p>
+                    <p>在彩票的领取时间内，您将无法对该类型的彩票进行刮彩操作，过了领取时间即可刮彩。</p>
+                </div>
+            </div>
+            <!-- <div class="send-link-handle">
+                <p class="tit">请手动复制这段链接发送给要赠送的人。</p>
+                <span class="link-font">www.baidu.com</span>
+            </div> -->
+            <span class="send-btn-confirm" @click="submit()">生成赠送链接并分享</span>
+        </div>
+        <div class="share-sign-alert" v-show="sharealert"></div>
+        <!-- <div class="alert-black-bg" v-show="sharealert"></div>
+        <div class="share-alertbox" v-show="sharealert">
+            <div class="cont-box">
+                <span class="link-font">{{URL+'login.html?oid='+linkid}}</span>
+                <span class="tips">请手动复制这段链接发送给要赠送的人。</span>
+            </div>
+            <span class="close-btn" @click="sharealert=false"></span>
+        </div> -->
+        <a class="return-home" href="index.html"></a>
+    </div>
+    <script src="public/main.js"></script>
+    <script src="js/send_more.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+.service-wrap{
+	width: 6.9rem;
+	padding: 0.72rem 0.3rem 0.6rem;
+}
+.service-wrap h4{
+	font-size: 0.6rem;
+	line-height: 0.84rem;
+	color: #000;
+	font-weight: normal;
+}
+.service-wrap .cont{
+	font-size: 0.32rem;
+	line-height: 0.64rem;
+	margin-top: 0.46rem;
+	color: #000;
+}

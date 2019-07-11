@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="content-language" content="zh-CN"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content="杭州博采网络科技股份有限公司-http://www.bocweb.cn"/>
+    <meta name="renderer" content="webkit">
+    <title>刮刮乐</title>
+    <link href="favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="public/public.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/swiper.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/product_info.css">
+    <script src="public/dists.js"></script>
+    <script src="public/public.js"></script>
+    <script src="public/c_main.js"></script>
+    <script src="public/swiper.min.js"></script>
+    <script src="public/adaptive-version2.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=700b132845ef5b0b135066dfa0222a37&services=&t=20150305140607"></script>
+    <script>
+        // 设计图宽度
+        window['adaptive'].desinWidth = 750;
+        // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+        window['adaptive'].baseFont = 12;
+        // 初始化
+        window['adaptive'].init();
+    </script>
+</head>
+<body class="gray-bg">
+    <div id="main" v-cloak>
+        <div class="pro-info">
+            <div class="ban-wrap">
+                <ul class="swiper-wrapper">
+                    <li v-for="li in info.pic" class="swiper-slide"><img :src="li" alt=""></li>
+                    <li v-for="li in info.video" class="swiper-slide">
+                        <video :src="li"></video>
+                    </li>
+                    <!-- <li class="swiper-slide"><img src="img/img_05.png" alt=""></li> -->
+                </ul>
+                <div class="pagination"></div>
+            </div>
+            <div class="pro-num-box f-cb" @click="buyhand=0,carhand=0">
+                <span class="fl pricebox">
+                    ￥<span class="num">{{info.price}}</span>
+                </span>
+                <span class="fl num-people">{{info.salesVolume}}人已购买</span>
+                <span class="fr num-residue">余票 <span class="num">{{info.stock}}</span> 张</span>
+            </div>
+            <div class="pro-msg" @click="buyhand=0,carhand=0">
+                <p class="name">{{info.gname}}</p>
+                <div class="msg-list">
+                    <ul>
+                        <li>
+                            <p class="tit red">{{info.maxPrize>10000?(info.maxPrize/10000).toFixed(0)+'万':info.maxPrize}}</p>
+                            <p class="stt">最高奖励</p>
+                            <span class="line"></span>
+                        </li>
+                        <li>
+                            <p class="tit">{{info.validityPeriodStr.split(' ')[0]}}</p>
+                            <p class="stt">有效期</p>
+                            <span class="line"></span>
+                        </li>
+                        <li>
+                            <p class="tit">{{city+'市'}}</p>
+                            <p class="stt">购票点</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="intr-wrap white-bg" @click="buyhand=0,carhand=0">
+                <p class="tit">玩法介绍</p>
+                <div class="word" v-html="info.content"></div>
+            </div>
+            <div class="bot-handle f-cb">
+                <a class="fl shop-num" href="shop_car.html">共计：<span class="num">{{info.number}}张</span></a>
+                <span class="fr buy-btn" @click="buyhand=1">立即购买</span>
+                <span class="fr join-car" @click="carhand=1">加入购物车</span>
+            </div>
+        </div>
+        <div class="shopcar-handle" v-show="buyhand==1||carhand==1">
+            <div class="num-box f-cb">
+                <span class="fl cut btn" @click="cut()"></span>
+                <input class="fl num" v-model="numberStr" @keyup="keyup()" type="number" value="1">
+                <span class="fl add btn" @click="add()"></span>
+            </div>
+            <span class="confirm-btn" @click="confirm()">确定</span>
+        </div>
+        <a class="return-home" href="index.html"></a>
+    </div>
+    <script src="public/main.js"></script>
+    <script src="js/product_info.js"></script>
+</body>
+</html>

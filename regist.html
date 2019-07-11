@@ -1,0 +1,74 @@
+<#assign contextPath = springMacroRequestContext.getContextPath() />
+<!doctype html>
+<html lang="cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="content-language" content="zh-CN"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content="杭州博采网络科技股份有限公司-http://www.bocweb.cn"/>
+    <meta name="renderer" content="webkit">
+    <title>刮刮乐</title>
+    <link href="favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="${contextPath }/html/public/public.css">
+    <link rel="stylesheet" href="${contextPath }/html/css/style.css">
+    <link rel="stylesheet" href="${contextPath }/html/public/swiper.css">
+    <link rel="stylesheet" href="${contextPath }/html/css/regist.css">
+    <script src="${contextPath }/html/public/dists.js"></script>
+    <script src="${contextPath }/html/public/public.js"></script>
+    <script src="${contextPath }/html/public/c_main.js"></script>
+    <script src="${contextPath }/html/public/swiper.min.js"></script>
+    <script src="${contextPath }/html/public/adaptive-version2.js"></script>
+    <script>
+        // 设计图宽度
+        window['adaptive'].desinWidth = 750;
+        // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+        window['adaptive'].baseFont = 12;
+        // 初始化
+        window['adaptive'].init();
+    </script>
+</head>
+<body>
+    <div id="main">
+        <div class="regist-wrap">
+            <h4>注册我们</h4>
+            <div class="form-inp">
+                <ul>
+                    <li>
+                        <input class="tex tel" type="text" placeholder="请输入手机号码">
+                    </li>
+                    <li>
+                        <input class="tex fl s-tex code" type="text" placeholder="请输入短信验证码">
+                        <span class="fl line"></span>
+                        <span class="fr send-code">发送验证码</span>
+                    </li>
+                    <li>
+                        <input class="tex nickName" type="text" placeholder="请输入用户名${nickName}" value="${nickName}">
+                    </li>
+                    <li>
+                        <input class="tex password" type="password" placeholder="密码 (6-25个字母、数字、符号组成)">
+                    </li>
+                    <li>
+                        <input class="tex rpassword" type="password" placeholder="确认密码">
+                    </li>
+                </ul>
+				 <input  type="hidden" name="openid" id="openid" value="${openid}" >
+				 <input  type="hidden" name="headimgurl" id="headimgurl" value="${headimgurl}" >
+				 <p class="link-login">已有账号，<a href="${contextPath }/html/login.html">立即登录</a></p>
+                <input class="sub-btn" type="submit" value="注册">
+            </div>
+            <div class="bot-cont">
+                <p class="font1">未注册的手机号，点击确认时自动注册，且代表您已同意<a class="imp" href="${contextPath }/html/agreement.html?type=4">《刮刮彩会员协议》</a>及<a class="imp" href="${contextPath }/html/agreement.html?type=5">《隐私协议》</a></p>
+                <p class="font2">如需帮助可拨打服务热线　<a class="red" href=""></a></p>
+            </div>
+        </div>
+    </div>
+    <script src="${contextPath }/html/public/main.js"></script>
+    <script src="${contextPath }/views/module/regist.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+
+.product-wrap .top-select-box{
+	background-color: #fff;
+	position: relative;
+	z-index: 10;
+}
+.product-wrap .top-select-box ul{
+	width: 100%;
+}
+.product-wrap .top-select-box li{
+	width: 50%;
+	line-height: 0.46rem;
+	text-align: center;
+}
+.product-wrap .top-select-box .tit{
+	padding: 0.22rem 0;
+	box-shadow: -1px 4px 8px 0 rgba(0,0,0,0.04);
+	width: 100%;
+	height: 0.46rem;
+	position: relative;
+	z-index: 2;
+}
+.product-wrap .top-select-box .titbox{
+	font-size: 0.28rem;
+	color: #666;
+	display: inline-block;
+	padding-right: 0.34rem;
+	background: url(../img/ico_16.png) no-repeat right center;
+	background-size: 0.16rem auto;
+}
+.product-wrap .top-select-box li.cur .titbox{
+	color: #e31b1b;
+	background: url(../img/ico_17.png) no-repeat right center;
+	background-size: 0.16rem auto;
+}
+.product-wrap .top-select-box .sub-box{
+	position: absolute;
+	left: 0;
+	top: 0.9rem;
+	background-color: #fff;
+	width: 6.9rem;
+	padding: 0.28rem 0.3rem;
+	text-align: left;
+	/*display: none;*/
+}
+.product-wrap .top-select-box .sub-firbox p{
+	line-height: 0.9rem;
+	font-size: 0.28rem;
+	color: #333;
+}
+.product-wrap .top-select-box .sub-firbox p.cur{
+	background: url(../img/ico_18.png) no-repeat right center;
+	background-size: 0.27rem auto;
+}
+.product-wrap .top-select-box .sub-firbox .hot{
+	display: inline-block;
+	width: 0.21rem;
+	height: 0.9rem;
+	margin-left: 0.2rem;
+	background: url(../img/ico_19.png) no-repeat center;
+	background-size: 100% auto;
+}
+.product-wrap .top-select-box .sub-secbox{
+	padding-top: 0.4rem;
+	/*position: relative;*/
+	overflow: hidden;
+}
+.product-wrap .top-select-box .sub-secbox p.type-tt{
+	font-size: 0.28rem;
+	color: #c4c4c4;
+	line-height: 0.4rem;
+}
+.product-wrap .top-select-box .sub-secbox .sele-box{
+	width: 100%;
+	height: 0.8rem;
+	margin-top: 0.16rem;
+	background-color: #fdfcfc;
+}
+.product-wrap .top-select-box .sub-secbox .lab-box{
+	margin-top: 0.42rem;
+	line-height: 0.68rem;
+	margin-top: 0.26rem;
+	width: 113%;
+}
+.product-wrap .top-select-box .sub-secbox .lab-box span{
+	display: inline-block;
+	margin-right: 1.48rem;
+	color: #888;
+	font-size: 0.28rem;
+}
+.product-wrap .top-select-box .sub-secbox .lab-box span.cur{
+	color: #e31b1b;
+}
+.up-black-bg{
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 9;
+	background-color: #000;
+	opacity: 0.6;
+	width: 100%;
+	height: 100%;
+}
+.havent-pro .sign-cont{
+	padding-top: 0.8rem;
+	background-color: #f0f2f5;
+	padding-bottom: 0.44rem;
+}
+.havent-pro .sign-cont .ico{
+	height: 1.6rem;
+	background: url(../img/ico_20.png) no-repeat center;
+	background-size: 1.73rem auto;
+}
+.havent-pro .sign-cont .tit{
+	font-size: 0.26rem;
+	line-height: 0.38rem;
+	text-align: center;
+	color: #999;
+	margin-top: 0.2rem;
+}
+.i-wrap-sec .tit-box{
+	line-height: 0.6rem;
+	margin-top: 0.28rem;
+	text-align: center;
+	font-size: 0.28rem;
+	color: #999;
+	position: relative;
+}
+.i-wrap-sec .tit-box .line{
+	display: inline-block;
+	width: 1.5rem;
+	height: 1px;
+	background-color: #cdcdcd;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-top: -0.5px;
+}
+.i-wrap-sec .tit-box .line1{
+	margin-left: -2.2rem;
+}
+.i-wrap-sec .tit-box .line2{
+	margin-left: -2.2rem;
+	margin-left: 0.7rem;
+}

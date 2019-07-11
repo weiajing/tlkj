@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="content-language" content="zh-CN"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content="杭州博采网络科技股份有限公司-http://www.bocweb.cn"/>
+    <meta name="renderer" content="webkit">
+    <title>刮刮乐</title>
+    <link href="favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="public/public.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/swiper.css">
+    <link rel="stylesheet" href="css/account.css">
+    <script src="public/dists.js"></script>
+    <script src="public/public.js"></script>
+    <script src="public/c_main.js"></script>
+    <script src="public/swiper.min.js"></script>
+    <script src="public/adaptive-version2.js"></script>
+    <script>
+        // 设计图宽度
+        window['adaptive'].desinWidth = 750;
+        // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+        window['adaptive'].baseFont = 12;
+        // 初始化
+        window['adaptive'].init();
+    </script>
+</head>
+<body style="background:#f0f2f5;">
+    <div id="main" v-cloak>
+        <div class="account">
+            <div class="box">
+                <ul>
+                    <li>
+                        <span class="tit">头像</span>
+                        <span class="file">
+                            <img :src="info.headImgUrl" alt="">
+                            <input type="file" accept="image/*" @change="uploadHeadimg($event)">
+                        </span>
+                    </li>
+                    <li>
+                        <a class="display" href="account_name.html">
+                            <span class="tit">修改昵称</span>
+                            <span class="name">{{info.nickName}}</span>
+                        </a>
+                    </li>
+                    <li class="cur">
+                        <a class="display" href="account_password.html">修改登录密码</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="box">
+                <ul>
+                    <li>
+                        <a class="display" href="account_telephone.html" v-show="info.telType == 1">
+                            <span class="tit">修改绑定手机</span>
+                            <span class="name sp">{{info.telType | telType}}</span>
+                        </a>
+                        <a class="display" href="phone_bind.html" v-show="info.telType == 0">
+                            <span class="tit">绑定手机</span>
+                            <span class="name sp">{{info.telType | telType}}</span>
+                        </a>
+                    </li>
+                    <li class="cur">
+                        <!-- <a class="display" href="javascript:;" v-show="info.check==0">
+                            <span class="tit">实名认证</span>
+                            <span class="name sp">认证中</span>
+                        </a>
+                        <a class="display" href="javascript:;" v-show="info.check==1">
+                            <span class="tit">实名认证</span>
+                            <span class="name sp">已认证</span>
+                        </a>
+                        <a class="display" href="account_id.html" v-show="info.check==2">
+                            <span class="tit">实名认证</span>
+                            <span class="name sp">未通过</span>
+                        </a>
+                        <a class="display" href="account_id.html" v-show="info.check==3">
+                            <span class="tit">实名认证</span>
+                            <span class="name sp">去认证</span>
+                        </a> -->
+                        <a class="display" :href="info.check==3?'account_id.html':'id_state.html'">
+                            <span class="tit">实名认证</span>
+                            <span class="name sp">{{info.check | state}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="box">
+                <ul>
+                    <li class="cur sp">
+                        <a class="display" :href="'tel:'+call">
+                            <span class="tit">客服 {{call}}</span>
+                            <span class="teleimg"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="box" v-show="!plus.is_weixin()">
+                <ul>
+                    <li class="cur sp">
+                        <a class="display out" href="javascript:;" @click="logout()">退出登录</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <a class="return-home" href="index.html"></a>
+    </div>
+    <script src="js/lrz/lrz.all.bundle.js"></script>
+    <script src="public/main.js"></script>
+    <script src="js/account.js"></script>
+</body>
+</html>

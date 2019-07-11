@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="content-language" content="zh-CN"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content="杭州博采网络科技股份有限公司-http://www.bocweb.cn"/>
+    <meta name="renderer" content="webkit">
+    <title>刮刮乐</title>
+    <link href="favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="public/public.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/swiper.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/order_info.css">
+    <script src="public/dists.js"></script>
+    <script src="public/public.js"></script>
+    <script src="public/c_main.js"></script>
+    <script src="public/swiper.min.js"></script>
+    <script src="public/adaptive-version2.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=700b132845ef5b0b135066dfa0222a37&services=&t=20150305140607"></script>
+    <script>
+        // 设计图宽度
+        window['adaptive'].desinWidth = 750;
+        // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+        window['adaptive'].baseFont = 12;
+        // 初始化
+        window['adaptive'].init();
+    </script>
+</head>
+<body class="gray-bg">
+    <div id="main" v-cloak class="padb0">
+        <div class="order-info">
+            <div class="cent-main">
+                <div class="top-main">
+                    <a class="help-ico" href="question.html">
+                        问题反馈
+                    </a>
+                    <div class="top-sign">
+                        <span class="avatarbox"><img :src="info.thumbnail" alt=""></span>
+                        <p class="name">{{info.gname}}</p>
+                    </div>
+                    <ul class="msg-box">
+                        <li>
+                            <span class="fl tit">彩票有效期至</span>
+                            <span class="fr">{{info.validityPeriodStr}}</span>
+                        </li>
+                        <li>
+                            <span class="fl tit">最高奖金</span>
+                            <span class="fr">{{info.maxPrize}}</span>
+                        </li>
+                        <!-- <li v-show="info.thirdPartyNo">
+                            <span class="fl tit">商品编号</span>
+                            <span class="fr">{{info.thirdPartyNo}}</span>
+                        </li> -->
+                    </ul>
+                </div>
+                <div class="sectit-box"><span class="line line1"></span>刮奖区域<span class="line line2"></span></div>
+                <div class="prize-box" id="prize-main">
+                    <div class="canvas" id="center" v-show="canvasShow">
+                        <canvas id="c1" width="321" height="118"></canvas>
+                    </div>
+                    <div class="get-box" v-show="info.stat == 1">
+                        <span class="word cent">
+                            <p>该彩票已赠送他人待他人领取</p>
+                            <p class="times-down"></p>
+                        </span>
+                    </div>
+                    <div class="get-box" v-show="info.stat == 0">
+                        <span class="word cent">
+                            领取结束，还有余票 {{info.number}} 张，您可以继续赠送或者自己刮奖。
+                        </span>
+                        <!-- <div class="btn-box">
+                            <a class="btn" href="javascript:;" @click="getnumAlert=true">点我刮奖</a>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="return-link"><a href="member.html">返回个人中心</a></div>
+                <div class="tips-word" v-show="info.stat == 3">
+                    <p>温馨提示：</p>
+                    <p>奖励将在 3 个工作日内充值进您的微信钱包，请注意查看；一万元以上奖金需要凭您的身份证和购彩订单去销售网点兑换</p>
+                </div>
+            </div>
+            <div class="bot-btn-hand f-cb">
+                <!-- <a class="btn btn1" :href="'send.html?id='+info.branchGoodsId">赠送</a>
+                <span class="btn btn2" @click="shareView()">分享</span> -->
+            </div>
+        </div>
+        <div class="alert-black-bg" v-show="sharealert||getnumAlert"></div>
+        <div class="share-alertbox" v-show="sharealert">
+            <div class="cont-box">
+                <span class="link-font">{{URL+'share_info.html?oid='+linkid}}</span>
+                <span class="tips">请手动复制这段链接发送给要分享的人。</span>
+            </div>
+            <span class="close-btn" @click="sharealert=false"></span>
+        </div>
+        <div class="choice-getnum" v-show="getnumAlert">
+            <span class="close" @click="getnumAlert=false"></span>
+            <span class="cent-cont">共有 {{info.count}} 张彩票待开奖</span>
+            <div class="btn-box f-cb">
+                <span class="fl btn" @click="getscratch(1),getnumAlert=false">单张刮奖</span>
+                <span class="fl btn btn2" @click="getscratch(2)">全部刮奖</span>
+            </div>
+        </div>
+        <a class="return-home" href="index.html"></a>
+    </div>
+    <script src="public/main.js"></script>
+    <script src="js/order_sendinfo.js"></script>
+    <script src="js/canvas.js"></script>
+</body>
+</html>

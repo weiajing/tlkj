@@ -1,0 +1,75 @@
+.title{
+	font-size:0.34rem;
+	height: 0.88rem;
+	width: 7.5rem;
+	text-align: center;
+	line-height: 0.88rem;
+	color: #333; 
+	margin-bottom: 0.2rem;
+	background: #fff;
+}
+.account-telephone ul {
+    padding-left: 0.3rem;
+    width: 7.2rem;
+    float: none;
+    background: #fff;
+}
+.account-telephone li{
+	width: 7.2rem;
+    float: none;
+    border-bottom: 1px solid #e1e1e1;
+    height: 1.03rem;
+}
+.account-telephone li.cur{
+	border-bottom: 0px none;
+}
+.account-telephone li span{
+	font-size: 0.28rem;
+    line-height: 1.03rem;
+    display: inline-block;
+    height: 1.03rem;
+    color: #999;
+    width: 1.7rem;	
+}
+.account-telephone li input{
+	border:0px none;
+	height: 0.43rem;
+	line-height: 0.43rem;
+	padding: 0.3rem 0;
+	font-size: 0.28rem;
+	color:#c4c4c4; 
+	display: inline-block;
+	vertical-align: top;
+	width: 5rem;
+}
+.account-telephone li input.sp{
+	width: 3rem;
+}
+.account-telephone li input::-webkit-input-placeholder {
+  color: #999; 
+}
+.account-telephone li a.email{
+	font-size:0.3rem;
+	color:#e31b1b; 
+	line-height: 0.45rem;
+	color:#e31b1b;
+	float: right;
+	margin-right: 0.3rem;
+	height: 0.45rem;
+	border-left: 1px solid #e1e1e1;
+	padding-left: 0.3rem;
+	margin-top: 0.29rem;
+}
+.end-btn input{
+	width: 6.7rem;
+    height: 1rem;
+    margin: 0.6rem auto;
+    color: #ffffff;
+    text-align: center;
+    line-height: 1rem;
+    display: block;
+    border-radius: 1rem;
+    background-image: linear-gradient(-87deg, #e32929 0%, #cb1236 100%);
+    border: 0px none;
+    font-size: 0.32rem;
+}

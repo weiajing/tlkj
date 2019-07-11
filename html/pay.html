@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="content-language" content="zh-CN"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content="杭州博采网络科技股份有限公司-http://www.bocweb.cn"/>
+    <meta name="renderer" content="webkit">
+    <title>刮刮乐</title>
+    <link href="favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="public/public.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/swiper.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/pay.css">
+    <script src="public/dists.js"></script>
+    <script src="public/public.js"></script>
+    <script src="public/c_main.js"></script>
+    <script src="public/swiper.min.js"></script>
+    <script src="public/adaptive-version2.js"></script>
+    <script src="public/qrcode.js"></script>
+    <script>
+        // 设计图宽度
+        window['adaptive'].desinWidth = 750;
+        // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+        window['adaptive'].baseFont = 12;
+        // 初始化
+        window['adaptive'].init();
+    </script>
+</head>
+<body class="gray-bg">
+    <div id="main" v-cloak>
+        <div class="pay-wrap">
+            <div class="fir-cont white-bg">
+                <div class="price-box">
+                    <p class="tit">支付金额</p>
+                    <p class="price">{{info.sum}} 元</p>
+                </div>
+                <div class="pro-list">
+                    <ul>
+                        <li v-for="li in info.list">
+                            <span class="fl name">{{li.gname}}</span>
+                            <span class="fr num">x{{li.number}}</span>
+                        </li>
+                        <!-- <li>
+                            <span class="fl name">刮刮乐 - 十全十美</span>
+                            <span class="fr num">x1</span>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+            <p class="pay-type-tit">支付方式</p>
+            <div class="pay-type-box white-bg" v-show="isWeixin">
+                <span class="ico"><img src="img/img_07.png" alt=""></span>
+            </div>
+            <div class="phone-pay white-bg" v-show="!isWeixin">
+                <div class="word">
+                    <p>订单号：{{no}}</p>
+                    <!-- <p>支付编号：3124325436345423</p>
+                    <p>订单总额：<span class="red">¥168.00</span></p> -->
+                </div>
+                <p class="tit">保存二维码到微信进行支付</p>
+                <!-- <img :src="ajaxAPI+'/web/pay/wechat/restrict/code.htm?content='+codeimg+'&token='+token" alt=""> -->
+                <span class="wxcode-img" id="code"></span>
+            </div>
+            <div class="bot-tips">温馨提示：取消支付或中途放弃支付，不会生成订单</div>
+            <span class="bot-pay-btn" @click="pay()" v-show="isWeixin">确认支付￥{{info.sum}}</span>
+        </div>
+        <a class="return-home" href="index.html"></a>
+    </div>
+    <script src="public/main.js"></script>
+    <script src="js/pay.js"></script>
+</body>
+</html>

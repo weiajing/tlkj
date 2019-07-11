@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="content-language" content="zh-CN"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content="杭州博采网络科技股份有限公司-http://www.bocweb.cn"/>
+    <meta name="renderer" content="webkit">
+    <title>刮刮乐</title>
+    <link href="favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="public/public.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/swiper.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/shop_car.css">
+    <script src="public/dists.js"></script>
+    <script src="public/public.js"></script>
+    <script src="public/c_main.js"></script>
+    <script src="public/swiper.min.js"></script>
+    <script src="public/adaptive-version2.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=700b132845ef5b0b135066dfa0222a37&services=&t=20150305140607"></script>
+    <script>
+        // 设计图宽度
+        window['adaptive'].desinWidth = 750;
+        // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+        window['adaptive'].baseFont = 12;
+        // 初始化
+        window['adaptive'].init();
+    </script>
+</head>
+<body class="gray-bg">
+    <div id="main" v-cloak>
+        <div class="shop-car">
+            <div class="top-tit">
+                <span class="tit">购物车（{{list.length}}）</span>
+                <span class="fr edit-btn" v-show="editradius==0" @click="editradius=1">编辑</span>
+                <span class="fr confirm-btn" v-show="editradius==1" @click="editradius=0,changeNum()">完成</span>
+            </div>
+            <div class="list-wrap">
+                <ul>
+                    <li v-for="(li,index) in list">
+                        <input class="fl check" type="checkbox" :checked="li.checked==true?true:false" @click="total($event,index)">
+                        <span v-show="li.stat==0" class="fl sign"><img src="img/ico_25.png" alt=""></span>
+                        <span class="fl img"><img :src="li.thumbnail" alt=""></span>
+                        <div class="fl cont-box" v-show="editradius==0">
+                            <p class="tit">{{li.gname}}</p>
+                            <p class="lab">{{li.cname}} <span class="line"></span> 截止时间 {{li.validityPeriodStr}}</p>
+                        </div>
+                        <div class="fr num-box num-font" v-show="editradius==0">
+                            <p class="price">￥{{li.price}}</p>
+                            <p class="num">X{{li.number}}</p>
+                        </div>
+                        <div class="fl num-box" v-show="editradius==1">
+                            <span class="fl btn cut" @click="cut(index,li.stock)"></span>
+                            <input class="fl input-num" type="number" @keyup="keyup($event,index,li.stock)" :value="li.number">
+                            <span class="fl btn add" @click="add(index,li.stock)"></span>
+                        </div>
+                        <span class="delet-btn fr" v-show="editradius==1" @click="deletepro(li.oid)">删除</span>
+                    </li>
+                    <!-- <li>
+                        <input class="fl check" type="checkbox">
+                        <span class="fl img"><img src="img/img_06.png" alt=""></span>
+                        <div class="fl cont-box" v-show="editradius==0">
+                            <p class="tit">刮刮乐 - 十全十美</p>
+                            <p class="lab">分类1 <span class="line"></span> 截止时间 2019.12.31</p>
+                        </div>
+                        <div class="fr num-box" v-show="editradius==0">
+                            <p class="price">￥20</p>
+                            <p class="num">X5</p>
+                        </div>
+                        <div class="fl num-box" v-show="editradius==1">
+                            <span class="fl btn cut"></span>
+                            <input class="fl input-num" type="number" value="1">
+                            <span class="fl btn add"></span>
+                        </div>
+                        <span class="delet-btn fr" v-show="editradius==1">删除</span>
+                    </li>
+                    <li>
+                        <span class="fl sign"><img src="img/ico_25.png" alt=""></span>
+                        <span class="fl img"><img src="img/img_06.png" alt=""></span>
+                        <div class="fl cont-box" v-show="editradius==0">
+                            <p class="tit">刮刮乐 - 十全十美</p>
+                            <p class="lab">分类1 <span class="line"></span> 截止时间 2019.12.31</p>
+                        </div>
+                        <div class="fr num-box" v-show="editradius==0">
+                            <p class="price">￥20</p>
+                            <p class="num">X5</p>
+                        </div>
+                        <div class="fl num-box" v-show="editradius==1">
+                            <span class="fl btn cut"></span>
+                            <input class="fl input-num" type="number" value="1">
+                            <span class="fl btn add"></span>
+                        </div>
+                        <span class="delet-btn fr" v-show="editradius==1">删除</span>
+                    </li> -->
+                </ul>
+            </div>
+            <div class="bot-handle f-cb">
+                <label class="check-all fl">
+                    <input class="fl check" type="checkbox" :checked="checkall==true?true:false" @click="total($event)">
+                    <span class="fl tt">全选</span>
+                </label>
+                <span class="fr dele" v-show="editradius==1" @click="deleteAll()">删除</span>
+                <span class="fr sub-btn" v-show="editradius==0" @click="submit()">结算</span>
+                <span class="total-price fr" v-show="editradius==0">合计：<span class="price">￥ <span class="num">{{totalprice}}</span></span></span>
+            </div>
+        </div>
+        <bar now="shopcar"></bar>
+    </div>
+    <script src="public/main.js"></script>
+    <script src="js/shop_car.js"></script>
+</body>
+</html>

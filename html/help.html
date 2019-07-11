@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="content-language" content="zh-CN"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content="杭州博采网络科技股份有限公司-http://www.bocweb.cn"/>
+    <meta name="renderer" content="webkit">
+    <title>刮刮乐</title>
+    <link href="favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="public/public.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/swiper.css">
+    <link rel="stylesheet" href="css/account.css">
+    <script src="public/dists.js"></script>
+    <script src="public/public.js"></script>
+    <script src="public/c_main.js"></script>
+    <script src="public/swiper.min.js"></script>
+    <script src="public/adaptive-version2.js"></script>
+    <script>
+        // 设计图宽度
+        window['adaptive'].desinWidth = 750;
+        // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+        window['adaptive'].baseFont = 12;
+        // 初始化
+        window['adaptive'].init();
+    </script>
+</head>
+<body style="background:#f0f2f5;">
+    <div id="main" v-cloak>
+        <div class="account sp">
+            <div class="title">
+                帮助中心
+            </div>
+            <div class="box">
+                <ul>
+                    <li>
+                        <a class="display" href="info.html?type=2">
+                            <span class="tit">公司介绍</span>
+                        </a>
+                    </li>
+                    <li class="cur">
+                        <a class="display" href="info.html?type=3">
+                            <span class="tit">新手指南</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="box">
+                <ul>
+                    <li class="cur sp">
+                        <a class="display" :href="'tel:'+call">
+                            <span class="tit">客服 {{call}}</span>
+                            <span class="teleimg"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <a class="return-home" href="index.html"></a>
+    </div>
+    <script src="public/main.js"></script>
+    <script src="js/help.js"></script>
+</body>
+</html>

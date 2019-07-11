@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="content-language" content="zh-CN"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content="杭州博采网络科技股份有限公司-http://www.bocweb.cn"/>
+    <meta name="renderer" content="webkit">
+    <title>刮刮乐</title>
+    <link href="favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="public/public.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/swiper.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/member.css">
+    <script src="public/dists.js"></script>
+    <script src="public/public.js"></script>
+    <script src="public/c_main.js"></script>
+    <script src="public/swiper.min.js"></script>
+    <script src="public/adaptive-version2.js"></script>
+    <script>
+        // 设计图宽度
+        window['adaptive'].desinWidth = 750;
+        // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+        window['adaptive'].baseFont = 12;
+        // 初始化
+        window['adaptive'].init();
+    </script>
+</head>
+<body class="gray-bg">
+    <div id="main" v-cloak>
+        <div class="member-wrap">
+            <div class="member-msg">
+                <span class="avatar-box">
+                    <img :src="info.headImgUrl" alt="">
+                    <!-- <input class="file" type="file"> -->
+                </span>
+                <p class="tit">{{info.nickName}}</p>
+            </div>
+            <div class="order-link">
+                <ul>
+                    <li>
+                        <a href="order.html">
+                            <!-- <span class="ico ico1"><span class="num">1</span></span> -->
+                            <span class="ico ico1"></span>
+                            <p>全部订单</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="order.html?stat=1">
+                            <span class="ico ico2"></span>
+                            <p>待刮奖</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="order.html?stat=4">
+                            <span class="ico ico3"></span>
+                            <p>未中奖</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="order.html?stat=5">
+                            <span class="ico ico4"></span>
+                            <p>待兑换</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="order.html?stat=6">
+                            <span class="ico ico5"></span>
+                            <p>已兑换</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="order_send.html">
+                            <span class="ico ico6"></span>
+                            <p>赠送</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="cent-link white-bg">
+                <ul>
+                    <li>
+                        <a href="account.html">
+                            <span class="fl ico ico1"></span>
+                            <span class="fl tit">账号信息</span>
+                            <span class="fr point"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="news.html">
+                            <span class="fl ico ico2"></span>
+                            <span class="fl tit">消息中心</span>
+                            <span class="fr point"></span>
+                            <span class="fr num">{{info.unreadNumber}}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="help.html">
+                            <span class="fl ico ico3"></span>
+                            <span class="fl tit">帮助中心</span>
+                            <span class="fr point"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <bar now="my"></bar>
+    </div>
+    <script src="public/main.js"></script>
+    <script src="js/member.js"></script>
+</body>
+</html>

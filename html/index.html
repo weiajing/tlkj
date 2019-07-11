@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="content-language" content="zh-CN"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content="杭州博采网络科技股份有限公司-http://www.bocweb.cn"/>
+    <meta name="renderer" content="webkit">
+    <title>刮刮乐</title>
+    <link href="favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="public/public.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/swiper.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="public/dists.js"></script>
+    <script src="public/public.js"></script>
+    <script src="public/c_main.js"></script>
+    <script src="public/swiper.min.js"></script>
+    <script src="public/adaptive-version2.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=700b132845ef5b0b135066dfa0222a37&services=&t=20150305140607"></script>
+    <script>
+        // 设计图宽度
+        window['adaptive'].desinWidth = 750;
+        // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+        window['adaptive'].baseFont = 12;
+        // 初始化
+        window['adaptive'].init();
+    </script>
+</head>
+<body>
+    <div id="main" v-cloak>
+        <div class="i-ban">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide" v-for="li in banlist">
+                    <a v-show="li.type==1" :href="li.id?'pro_info.html?id='+li.id:'javascript:;'"><img :src="li.url" alt=""></a>
+                    <video v-show="li.type==2" :src="li.url" width="100%" height="100%" controls="" preload="" :poster="li.illustrations"></video>
+                </li>
+                <!-- <li class="swiper-slide">
+                    <a href=""><img src="img/img_01.png" alt=""></a>
+                </li> -->
+            </ul>
+            <div class="pagination"></div>
+
+            <span class="address-cont">{{city}}</span>
+            <a class="mess-ico" href="news.html"></a>
+        </div>
+        <div class="i-wrap-fir">
+            <div class="list">
+                <ul class="swiper-wrapper">
+                    <li class="swiper-slide" v-for="li in hotpro">
+                        <a :href="li.gid?'pro_info.html?id='+li.gid:'javascript:;'">
+                            <img :src="li.thumbnail" alt="">
+                        </a>
+                    </li>
+                    <!-- <li class="swiper-slide"><a href=""><img src="img/img_03.png" alt=""></a></li>
+                    <li class="swiper-slide"><a href=""><img src="img/img_04.png" alt=""></a></li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="i-wrap-sec">
+            <ul>
+                <li v-for="(li,index) in recompro">
+                    <a :href="'pro_info.html?id='+li.gid">
+                        <span class="fl ico"><img :src="li.thumbnail" alt=""></span>
+                        <div class="fl cont">
+                            <p class="tit">{{li.gname.length>4?li.gname.substring(0,4)+'...':li.gname}} <span :class="'tips-status status'+li.flg"></span></p>
+                            <p :class="li.emphases==1?'red font':'font'">{{li.subtitle}}</p>
+                        </div>
+                        <span v-show="index%2==0" class="line"></span>
+                    </a>
+                </li>
+                <!-- <li>
+                    <a href="pro_info.html">
+                        <span class="fl ico ico2"></span>
+                        <div class="fl cont">
+                            <p class="tit">码上有奖</p>
+                            <p class="font">15次中奖机会</p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="pro_info.html">
+                        <span class="fl ico ico3"></span>
+                        <div class="fl cont">
+                            <p class="tit">好运十倍</p>
+                            <p class="font">10次机会 40万</p>
+                        </div>
+                        <span class="line"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="pro_info.html">
+                        <span class="fl ico ico4"></span>
+                        <div class="fl cont">
+                            <p class="tit">国泰民安</p>
+                            <p class="font">最高奖金40万</p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="pro_info.html">
+                        <span class="fl ico ico5"></span>
+                        <div class="fl cont">
+                            <p class="tit">扑克风云</p>
+                            <p class="font">12次中奖机会</p>
+                        </div>
+                        <span class="line"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="pro_info.html">
+                        <span class="fl ico ico6"></span>
+                        <div class="fl cont">
+                            <p class="tit">闪耀钻石</p>
+                            <p class="font">最高奖励30万</p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="pro_info.html">
+                        <span class="fl ico ico7"></span>
+                        <div class="fl cont">
+                            <p class="tit">好运9</p>
+                            <p class="font">12次中奖机会</p>
+                        </div>
+                        <span class="line"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="pro_info.html">
+                        <span class="fl ico ico8"></span>
+                        <div class="fl cont">
+                            <p class="tit">深林探险</p>
+                            <p class="font">最高奖励30万</p>
+                        </div>
+                    </a>
+                </li> -->
+            </ul>
+        </div>
+        <a class="more-link-box" href="product.html">
+            更多刮刮乐<span class="ico"></span>
+        </a>
+        <bar now="index"></bar>
+    </div>
+    <script src="public/main.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

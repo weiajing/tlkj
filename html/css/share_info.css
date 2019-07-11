@@ -1,0 +1,214 @@
+
+.share-info{
+	background: url(../img/bg_02.png) no-repeat center top;
+	background-size: 100% auto;
+	padding-bottom: 1.08rem;
+}
+.top-main{
+	padding-top: 0.98rem;
+	text-align: center;
+}
+.top-main h4{
+	font-size: 0.42rem;
+	line-height: 0.6rem;
+	color: #fff;
+	font-weight: normal;
+}
+.top-main .sign-pic{
+	display: block;
+	width: 100%;
+	padding-top: 0.58rem;
+}
+.top-main .sign-pic img{
+	width: 6.58rem;
+}
+.titbox{
+	text-align: center;
+	line-height: 0.38rem;
+	margin-top: 0.54rem;
+	font-size: 0.26rem;
+	color: #fff;
+	position: relative;
+}
+.titbox .line{
+	display: inline-block;
+	position: absolute;
+	left: 50%;
+	height: 1px;
+	background-color: rgba(255,255,255,0.5);
+	top: 50%;
+	width: 2.7rem;
+}
+.titbox .line1{
+	margin-left: -3.46rem;
+}
+.titbox .line2{
+	margin-left: 0.76rem;
+}
+.prize-box{
+	width: 6.42rem;
+	min-height: 2.35rem;
+	padding: 0.3rem 0.24rem;
+	background: url(../img/bg_03.png) no-repeat center;
+	background-size: 100% 100%;
+	margin: 0.3rem auto 0;
+	position: relative;
+}
+.prize-box .canvas{
+	position: absolute;
+    left: 0.24rem;
+    top: 0.3rem;
+    width: 6.42rem;
+    height: 2.35rem;
+    z-index: 2;
+}
+.prize-box .canvas canvas{
+	width: 100%;
+	height: 100%;
+}
+.prize-box .canvas img{
+	width: 100%;
+	height: 100%;
+}
+.prize-box .get-box{
+	width: 100%;
+	/*height: 100%;*/
+	min-height: 2.35rem;
+	background: #e1e1e3;
+}
+.prize-box .get-box .word{
+	font-size: 0.28rem;
+	line-height: 0.4rem;
+	padding-top: 0.36rem;
+	width: 4.8rem;
+	margin: 0 auto;
+	color: #666;
+	text-align: center;
+	display: block;
+}
+.prize-box .get-box .btn-box{
+	padding-top: 0.18rem;
+	text-align: center;
+}
+.prize-box .get-box .btn{
+	display: inline-block;
+	margin: 0 0.16rem;
+	border-radius: 0.5rem;
+	background-image: linear-gradient(-87deg, #cb1236 0%, #e32929 100%);
+	color: #fff;
+	font-size: 0.28rem;
+	text-align: center;
+	width: 2.3rem;
+	line-height: 0.7rem;
+	height: 0.7rem;
+}
+.prizing-box{
+	width: 100%;
+	height: 100%;
+	background-color: #fffbe1;
+	text-align: center;
+}
+.prizing-box .tit{
+	font-size: 0.36rem;
+	line-height: 0.5rem;
+	color: #333;
+	padding-top: 0.25rem;
+	font-weight: bold;
+}
+.prizing-box .word{
+	display: block;
+	line-height: 0.4rem;
+	font-size: 0.28rem;
+	color: #666;
+	width: 95%;
+	margin: 0 auto;
+}
+.prizing-box .btn-box{
+	margin-top: 0.22rem;
+	height: 0.7rem;
+}
+.prizing-box .btn-box .btn{
+	display: inline-block;
+	width: 2.3rem;
+	height: 0.7rem;
+	line-height: 0.7rem;
+	text-align: center;
+	color: #fff;
+	background-image:linear-gradient(-87deg, #cb1236 0%, #e32929 100%);
+	margin: 0 0.16rem;
+	vertical-align: top;
+	border-radius: 0.5rem;
+	font-size: 0.28rem;
+}
+.prized-box{
+	width: 100%;
+	min-height: 2.35rem;
+	background: url(../img/bg_04.png) no-repeat center;
+	background-size: 100% 100%;
+	position: relative;
+}
+.prized-box.graybg{
+	background: #e1e1e3;
+}
+.prized-box img{
+	width: 100%;
+	height: 100%;
+}
+.prized-box .out-cont{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+.prized-box .cent-tit{
+	font-size: 0.36rem;
+	line-height: 0.5rem;
+	text-align: center;
+	padding-top: 0.43rem;
+	color: #e31b1b;
+	font-weight: bold;
+}
+.prized-box .btn-box{
+	margin-top: 0.42rem;
+	text-align: center;
+}
+.prized-box .btn-box .btn{
+	display: inline-block;
+	width: 2.3rem;
+	height: 0.7rem;
+	line-height: 0.7rem;
+	text-align: center;
+	color: #fff;
+	background-image:linear-gradient(-87deg, #cb1236 0%, #e32929 100%);
+	vertical-align: top;
+	margin: 0 0.16rem;
+	font-size: 0.28rem;
+	border-radius: 0.5rem;
+}
+.img-tabtit{
+	line-height: 0.6rem;
+	font-size: 0.28rem;
+	color: #fff;
+	margin-top: 0.2rem;
+	margin-bottom: -0.1rem;
+}
+.img-tabtit span{
+	display: inline-block;
+	float: left;
+	margin-right: 0.15rem;
+	padding: 0 0.2rem;
+	border-radius: 0.04rem;
+}
+.img-tabtit span.on{
+	background-color: #fff;
+	color: #333;
+}
+.prized-box .img-tab{
+	width: 100%;
+	height: 100%;
+}
+.result-pic-show{
+	margin-top: 0.3rem;
+	background: none;
+}

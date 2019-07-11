@@ -1,0 +1,85 @@
+.load-move{
+	text-align: center;
+	font-size: 0.24rem;
+	color: #666;
+	padding: 0.2rem 0;
+}
+.title{
+	font-size:0.34rem;
+	height: 0.88rem;
+	width: 7.5rem;
+	text-align: center;
+	line-height: 0.88rem;
+	color: #333; 
+	margin-bottom: 0.2rem;
+	background: #fff;
+	position: relative;
+}
+.title span{
+	position: absolute;
+	height: 0.88rem;
+	line-height: 0.88rem;
+	font-size:0.3rem;
+	color:#333;
+	right: 0.3rem;
+	top: 0px; 
+}
+.news ul{
+	padding-left: 0.3rem;
+	width: 7.2rem;
+	background: #fff;
+}
+.news li{
+	width: 100%;
+	padding-top: 0.29rem;
+}
+.news li a{
+	display: block;
+}
+.news li .img{
+	width: 0.8rem;
+	height: 0.8rem;
+	position: relative;
+	float: left;
+}
+.news .img img.img{
+	width: 0.8rem;
+	height: 0.8rem;
+	border-radius: 0.8rem;
+}
+.news .img .sp{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 0.2rem;
+	height: 0.2rem;
+	background: url(../img/pic-08.png) no-repeat;
+	background-size: 100%;
+}
+.news .img .sp.cur{
+	display: none;
+}
+.news .text{
+	width: 5.81rem;
+	float: right;
+	border-bottom:1px solid #e1e1e1;
+	padding-right: 0.3rem;
+	padding-bottom: 0.3rem;
+}
+.news .text .cn{
+	font-size:0.3rem;
+	color:#333; 
+	float: left;
+	line-height: 0.42rem;
+}
+.news .text .time{
+	float: right;
+	font-size: 0.22rem;
+	color: #aaa;
+	line-height: 0.42rem;
+}
+.news .text .te{
+	font-size:0.24rem;
+	color:#aaa;
+	line-height: 0.33rem;
+}

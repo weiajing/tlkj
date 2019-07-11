@@ -1,0 +1,3 @@
+main.js要改下ajaxAPI地址。
+
+c_main.js要改下登录地址。

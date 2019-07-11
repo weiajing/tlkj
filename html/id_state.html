@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="content-language" content="zh-CN"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content="杭州博采网络科技股份有限公司-http://www.bocweb.cn"/>
+    <meta name="renderer" content="webkit">
+    <title>刮刮乐</title>
+    <link href="favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="public/public.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/swiper.css">
+    <link rel="stylesheet" href="css/id_success.css">
+    <script src="public/dists.js"></script>
+    <script src="public/public.js"></script>
+    <script src="public/c_main.js"></script>
+    <script src="public/swiper.min.js"></script>
+    <script src="public/adaptive-version2.js"></script>
+    <script>
+        // 设计图宽度
+        window['adaptive'].desinWidth = 750;
+        // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+        window['adaptive'].baseFont = 12;
+        // 初始化
+        window['adaptive'].init();
+    </script>
+</head>
+<body style="background:#f0f2f5;">
+<div id="main">
+    <div class="id-success">
+        <div class="title">
+            实名认证
+        </div>
+        <div class="box">
+            <div class="img">
+                <img src="img/pic-09.png" alt="">
+            </div>
+            <template v-if="state==1">
+                <div class="tit">身份认证审核成功</div>
+                <div class="te">
+                    <p>姓名：{{realName}}</p>
+                    <p>身份证：{{idCard}}</p>
+                </div>
+            </template>
+            <template v-if="state==2">
+                <div class="tit">身份认证失败</div>
+                <a class="fail" href="account_id.html">重新提交</a>
+            </template>
+            <template v-if="state==0">
+                <div class="tit">身份认证审核中</div>
+                <div class="te" style="text-align: center;">
+                    <p>请耐心等待1~2个工作日</p>
+                    <p>如无反馈请拨打客服</p>
+                </div>
+            </template>
+            <div class="tesp">
+                <p class="p1">如需更换认证信息，请拨打客服热线</p>
+                <p class="p2"><a :href="'tel:'+call">热线：{{call}}</a></p>
+            </div>
+        </div>    
+    </div>
+        <a class="return-home" href="index.html"></a>
+</div>
+</body>
+<script src="public/main.js"></script>
+<script src="js/id_state.js"></script>
+</html>

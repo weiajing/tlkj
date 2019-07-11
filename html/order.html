@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="content-language" content="zh-CN"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content="杭州博采网络科技股份有限公司-http://www.bocweb.cn"/>
+    <meta name="renderer" content="webkit">
+    <title>刮刮乐</title>
+    <link href="favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="public/public.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/swiper.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/order.css">
+    <script src="public/dists.js"></script>
+    <script src="public/public.js"></script>
+    <script src="public/c_main.js"></script>
+    <script src="public/swiper.min.js"></script>
+    <script src="public/adaptive-version2.js"></script>
+    <script>
+        // 设计图宽度
+        window['adaptive'].desinWidth = 750;
+        // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+        window['adaptive'].baseFont = 12;
+        // 初始化
+        window['adaptive'].init();
+    </script>
+</head>
+<body class="gray-bg">
+    <div id="main" v-cloak>
+        <div class="order-wrap">
+            <div class="top-type f-cb">
+                <span :class="stat==0?'cur':''" @click="stat=0,viewAjax(),pageNo=1">全部订单</span>
+                <span :class="stat==1?'cur':''" @click="stat=1,viewAjax(),pageNo=1">待刮奖</span>
+                <span :class="stat==5?'cur':''" @click="stat=5,viewAjax(),pageNo=1">待兑换</span>
+                <span :class="stat==6?'cur':''" @click="stat=6,viewAjax(),pageNo=1">已兑换</span>
+                <span :class="stat==4?'cur':''" @click="stat=4,viewAjax(),pageNo=1">未中奖</span>
+            </div>
+            <div class="list-wrap">
+                <dl v-for="dl in orderlist">
+                    <dd>
+                        <p class="num-box">订单编号：{{dl.no}}</p>
+                        <ul>
+                            <li v-for="li in dl.list">
+                                <a :href="'order_info.html?id='+li.oid">
+                                    <span class="fl img"><img :src="li.thumbnail" alt=""></span>
+                                    <div class="fl cont">
+                                        <p class="tit">{{li.gname}}</p>
+                                        <div class="msg">
+                                            <p class="f-cb">
+                                                <span class="fl">{{li.cname}}</span>
+                                                <span class="line fl"></span>
+                                                <span class="fl">截止时间 {{li.validityPeriodStr}}</span>
+                                            </p>
+                                            <p v-show="li.thirdPartyNo">商品编号：{{li.thirdPartyNo}}</p>
+                                        </div>
+                                    </div>
+                                    <span class="fr status status1" v-show="li.stat == 1"></span>
+                                    <span class="fr status status2" v-show="li.stat == 2"></span>
+                                    <span class="fr status status3" v-show="li.stat == 3"></span>
+                                    <span class="fr status status4" v-show="li.stat == 4"></span>
+                                    <span class="fr status status5" v-show="li.stat == 5"></span>
+                                    <span class="fr status status6" v-show="li.stat == 6"></span>
+                                </a>
+                            </li>
+                            <!-- <li>
+                                <a href="order_info.html">
+                                    <span class="fl img"><img src="img/img_06.png" alt=""></span>
+                                    <div class="fl cont">
+                                        <p class="tit">刮刮乐 - 十全十美</p>
+                                        <div class="msg">
+                                            <p class="f-cb">
+                                                <span class="fl">分类1</span>
+                                                <span class="line fl"></span>
+                                                <span class="fl">截止时间 2019.12.31</span>
+                                            </p>
+                                            <p>商品编号：201710135213</p>
+                                        </div>
+                                    </div>
+                                    <span class="fr status status2"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="order_info.html">
+                                    <span class="fl img"><img src="img/img_06.png" alt=""></span>
+                                    <div class="fl cont">
+                                        <p class="tit">刮刮乐 - 十全十美</p>
+                                        <div class="msg">
+                                            <p class="f-cb">
+                                                <span class="fl">分类1</span>
+                                                <span class="line fl"></span>
+                                                <span class="fl">截止时间 2019.12.31</span>
+                                            </p>
+                                            <p>商品编号：201710135213</p>
+                                        </div>
+                                    </div>
+                                    <span class="fr status status3"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="order_info.html">
+                                    <span class="fl img"><img src="img/img_06.png" alt=""></span>
+                                    <div class="fl cont">
+                                        <p class="tit">刮刮乐 - 十全十美</p>
+                                        <div class="msg">
+                                            <p class="f-cb">
+                                                <span class="fl">分类1</span>
+                                                <span class="line fl"></span>
+                                                <span class="fl">截止时间 2019.12.31</span>
+                                            </p>
+                                            <p>商品编号：201710135213</p>
+                                        </div>
+                                    </div>
+                                    <span class="fr status status4"></span>
+                                </a>
+                            </li> -->
+                        </ul>
+                    </dd>
+                </dl>
+                <div class="noorder-sign" v-show="orderlist.length==0"><img src="img/img_11.png" alt=""></div>
+                <!-- <dl>
+                    <dd>
+                        <p class="num-box">订单编号：2017101359455</p>
+                        <ul>
+                            <li>
+                                <a href="order_info.html">
+                                    <span class="fl img"><img src="img/img_06.png" alt=""></span>
+                                    <div class="fl cont">
+                                        <p class="tit">刮刮乐 - 十全十美</p>
+                                        <div class="msg">
+                                            <p class="f-cb">
+                                                <span class="fl">分类1</span>
+                                                <span class="line fl"></span>
+                                                <span class="fl">截止时间 2019.12.31</span>
+                                            </p>
+                                            <p>商品编号：201710135213</p>
+                                        </div>
+                                    </div>
+                                    <span class="fr status status2"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="order_info.html">
+                                    <span class="fl img"><img src="img/img_06.png" alt=""></span>
+                                    <div class="fl cont">
+                                        <p class="tit">刮刮乐 - 十全十美</p>
+                                        <div class="msg">
+                                            <p class="f-cb">
+                                                <span class="fl">分类1</span>
+                                                <span class="line fl"></span>
+                                                <span class="fl">截止时间 2019.12.31</span>
+                                            </p>
+                                            <p>商品编号：201710135213</p>
+                                        </div>
+                                    </div>
+                                    <span class="fr status status3"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="order_info.html">
+                                    <span class="fl img"><img src="img/img_06.png" alt=""></span>
+                                    <div class="fl cont">
+                                        <p class="tit">刮刮乐 - 十全十美</p>
+                                        <div class="msg">
+                                            <p class="f-cb">
+                                                <span class="fl">分类1</span>
+                                                <span class="line fl"></span>
+                                                <span class="fl">截止时间 2019.12.31</span>
+                                            </p>
+                                            <p>商品编号：201710135213</p>
+                                        </div>
+                                    </div>
+                                    <span class="fr status status4"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl> -->
+            </div>
+            <div class="loadmore" v-show="readmore"><div class="loader"></div></div>
+        </div>
+        <bar now="my" v-show="stat!=1"></bar>
+        <bar now="order" v-show="stat==1"></bar>
+    </div>
+    <script src="public/main.js"></script>
+    <script src="js/order.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+.top-tit{
+	height: 0.88rem;
+	line-height: 0.88rem;
+	text-align: center;
+	width: 100%;
+	background-color: #fff;
+}
+.top-tit .tit{
+	display: inline-block;
+	font-size: 0.34rem;
+	color: #333;
+	font-weight: bold;
+}
+.top-tit .edit-btn{
+	display: inline-block;
+	color: #333;
+	font-size: 0.3rem;
+	position: absolute;
+	right: 0.3rem;
+	top: 0;
+	line-height: 0.88rem;
+}
+.top-tit .confirm-btn{
+	display: inline-block;
+	color: #d90303;
+	font-size: 0.3rem;
+	position: absolute;
+	right: 0.3rem;
+	top: 0;
+	line-height: 0.88rem;
+}
+.list-wrap{
+	margin-top: 0.3rem;
+	padding-bottom: 1rem;
+}
+.list-wrap ul{
+	width: 100%;
+}
+.list-wrap li{
+	width: 6.9rem;
+	padding: 0.32rem 0.3rem;
+	background-color: #fff;
+	margin-bottom: 0.2rem;
+	position: relative;
+}
+.list-wrap li .check{
+	width: 0.4rem;
+	height: 0.4rem;
+	background: url(../img/ico_24.png) no-repeat center;
+	background-size: 100% auto;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	margin-top: 0.32rem;
+}
+.list-wrap li .check:checked{
+	background: url(../img/ico_24_h.png) no-repeat center;
+	background-size: 100% auto;
+}
+.list-wrap li .img{
+	display: block;
+	width: 1.1rem;
+	height: 1.1rem;
+	margin-left: 0.3rem;
+}
+.list-wrap li .img img{
+	max-width: 100%;
+	max-height: 100%;
+}
+.list-wrap li .cont-box{
+	margin-left: 0.24rem;
+	width: 3.3rem;
+}
+.list-wrap li .tit{
+	font-size: 0.28rem;
+	color: #333;
+	line-height: 0.4rem;
+}
+.list-wrap li .lab{
+	line-height: 0.36rem;
+	margin-top: 0.12rem;
+	color: #aaa;
+	font-size: 0.24rem;
+}
+.list-wrap li .lab .line{
+	display: inline-block;
+	width: 1px;
+	height: 0.2rem;
+	background-color: #ccc;
+	margin: 0 0.08rem;
+}
+.list-wrap li .price{
+	font-size: 0.32rem;
+	color: #e31b1b;
+	line-height: 0.46rem;
+	font-weight: bold;
+}
+.list-wrap li .num{
+	font-size: 0.24rem;
+	line-height: 0.24rem;
+	margin-top: 0.2rem;
+	text-align: right;
+}
+.list-wrap li .sign{
+	display: inline-block;
+	width: 0.54rem;
+}
+.list-wrap li .sign img{
+	width: 100%;
+}
+.list-wrap li .delet-btn{
+	display: block;
+	width: 1rem;
+	height: 1.7rem;
+	line-height: 1.7rem;
+	text-align: center;
+	color: #fff;
+	font-size: 0.3rem;
+	background-color: #d81f2f;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.list-wrap li .num-box{
+	margin-top: 0.14rem;
+	margin-left: 0.3rem;
+}
+.list-wrap li .num-font{
+	width: 1.5rem;
+	margin-left: 0;
+	text-align: right;
+}
+.list-wrap li .btn{
+	display: block;
+	width: 0.78rem;
+	height: 0.78rem;
+}
+.list-wrap li .input-num{
+	width: 1.9rem;
+	height: 0.78rem;
+	text-align: center;
+	color: #333;
+	line-height: 0.78rem;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	margin: 0 1px;
+	font-size: 0.36rem;
+	border: none;
+	background: #f9f9f9;
+}
+.list-wrap li .cut{
+	background: url(../img/ico_22.png) no-repeat center #f9f9f9;
+	background-size: 0.26rem auto;
+}
+.list-wrap li .cut.max{
+	background: url(../img/ico_22_h.png) no-repeat center #f9f9f9;
+	background-size: 0.26rem auto;
+}
+.list-wrap li .add{
+	background: url(../img/ico_23.png) no-repeat center #f9f9f9;
+	background-size: 0.26rem auto;
+}
+.list-wrap li .add.max{
+	background: url(../img/ico_23_h.png) no-repeat center #f9f9f9;
+	background-size: 0.26rem auto;
+}
+.bot-handle{
+	width: 7.2rem;
+	padding-left: 0.3rem;
+	background-color: #fff;
+	position: fixed;
+	left: 0;
+	bottom: 1.02rem;
+	z-index: 2;
+}
+.bot-handle .check-all{
+	display: inline-block;
+	line-height: 0.98rem;
+}
+.bot-handle .check-all .tt{
+	display: inline-block;
+	font-size: 0.28rem;
+	margin-left: 0.12rem;
+	color: #333;
+}
+.bot-handle .check-all .check{
+	width: 0.4rem;
+	height: 0.4rem;
+	background: url(../img/ico_24.png) no-repeat center;
+	background-size: 100% auto;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	margin-top: 0.32rem;
+}
+.bot-handle .check-all .check:checked{
+	background: url(../img/ico_24_h.png) no-repeat center;
+	background-size: 100% auto;
+}
+.bot-handle .dele,.bot-handle .sub-btn{
+	display: block;
+	width: 2.2rem;
+	height: 0.98rem;
+	text-align: center;
+	line-height: 0.98rem;
+	color: #fff;
+	background-image: linear-gradient(-90deg, #ff9402 0%, #ffc605 100%);
+	font-size: 0.28rem;
+}
+.bot-handle .total-price{
+	display: inline-block;
+	margin-right: 0.27rem;
+	line-height: 0.98rem;
+	height: 0.98rem;
+	font-size: 0.26rem;
+	color: #333;
+}
+.bot-handle .total-price .price{
+	font-size: 0.24rem;
+	color: #e31b1b;
+}
+.bot-handle .total-price .num{
+	font-size: 0.32rem;
+}

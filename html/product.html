@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="content-language" content="zh-CN"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content="杭州博采网络科技股份有限公司-http://www.bocweb.cn"/>
+    <meta name="renderer" content="webkit">
+    <title>刮刮乐</title>
+    <link href="favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="public/public.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/swiper.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/product.css">
+    <script src="public/dists.js"></script>
+    <script src="public/public.js"></script>
+    <script src="public/c_main.js"></script>
+    <script src="public/swiper.min.js"></script>
+    <script src="public/adaptive-version2.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=700b132845ef5b0b135066dfa0222a37&services=&t=20150305140607"></script>
+    <script>
+        // 设计图宽度
+        window['adaptive'].desinWidth = 750;
+        // body 字体大小 会将body字体大小设置为 baseFont / 100 + 'rem'
+        window['adaptive'].baseFont = 12;
+        // 初始化
+        window['adaptive'].init();
+    </script>
+</head>
+<body>
+    <div id="main" v-cloak>
+        <div class="product-wrap">
+            <div class="top-select-box">
+                <ul>
+                    <li :class="sub1?'cur':''">
+                        <div class="tit" @click="subfir()">
+                            <span class="titbox">综合排序</span>
+                        </div>
+                        <div class="sub-box sub-firbox" v-show="sub1">
+                            <p :class="sort==''?'cur':''" @click="sort='',viewAjax(),sub1=0">综合排序</p>
+                            <p :class="sort=='sales_volume'?'cur f-cb':'f-cb'" @click="sort='sales_volume',viewAjax(),sub1=0"><span class="fl">热度最高</span><span class="hot fl"></span></p>
+                            <p :class="sort=='oid'?'cur':''" @click="sort='oid',viewAjax(),sub1=0">最新发布</p>
+                        </div>
+                    </li>
+                    <li :class="sub2?'cur':''">
+                        <div class="tit" @click="subsec()">
+                            <span class="titbox">筛选分类</span>
+                        </div>
+                        <div class="sub-box sub-secbox" v-show="sub2">
+                            <!-- <p class="type-tt">票种</p>
+                            <select class="sele-box" name="" id="">
+                                <option value="">全部</option>
+                                <option value="">全部</option>
+                                <option value="">全部</option>
+                            </select> -->
+                            <div class="lab-box" style="margin-top: 0;">
+                                <span :class="cidStr==''?'cur':''" @click="cidStr='',viewAjax(),sub2=0">全部</span>
+                                <span :class="cidStr==item.oid?'cur':''" @click="cidStr=item.oid,viewAjax(),sub2=0" v-for="item in typelist">{{item.cname}}</span>
+                                <!-- <span>开门红</span>
+                                <span>丝路寻梦</span>
+                                <span>最佳阵容</span> -->
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="up-black-bg" v-show="sub1||sub2" @click="sub1=0,sub2=0"></div>
+            <div class="havent-pro" v-show="nonepro">
+                <div class="sign-cont">
+                    <p class="ico"></p>
+                    <p class="tit">暂未检索到关键字商品信息</p>
+                </div>
+                <div class="i-wrap-sec">
+                    <div class="tit-box"><span class="line line1"></span>为你推荐<span class="line line2"></span></div>
+                    <ul>
+                        <li v-for="(li,index) in recomlist">
+                            <a :href="'pro_info.html?id='+li.gid">
+                                <span class="fl ico"><img :src="li.thumbnail" alt=""></span>
+                                <div class="fl cont">
+                                    <p class="tit">{{li.gname.length>4?li.gname.substring(0,4)+'...':li.gname}} <span v-show="li.flg!=0" :class="'tips-status status'+li.flg"></span></p>
+                                    <p :class="li.emphases==1?'red font':'font'">{{li.subtitle}}</p>
+                                </div>
+                                <span v-show="index%2==0" class="line"></span>
+                            </a>
+                        </li>
+                        <!-- <li>
+                            <a href="pro_info.html">
+                                <span class="fl ico ico2"></span>
+                                <div class="fl cont">
+                                    <p class="tit">码上有奖</p>
+                                    <p class="font">15次中奖机会</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pro_info.html">
+                                <span class="fl ico ico3"></span>
+                                <div class="fl cont">
+                                    <p class="tit">好运十倍</p>
+                                    <p class="font">10次机会 40万</p>
+                                </div>
+                                <span class="line"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pro_info.html">
+                                <span class="fl ico ico4"></span>
+                                <div class="fl cont">
+                                    <p class="tit">国泰民安</p>
+                                    <p class="font">最高奖金40万</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pro_info.html">
+                                <span class="fl ico ico5"></span>
+                                <div class="fl cont">
+                                    <p class="tit">扑克风云</p>
+                                    <p class="font">12次中奖机会</p>
+                                </div>
+                                <span class="line"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pro_info.html">
+                                <span class="fl ico ico6"></span>
+                                <div class="fl cont">
+                                    <p class="tit">闪耀钻石</p>
+                                    <p class="font">最高奖励30万</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pro_info.html">
+                                <span class="fl ico ico7"></span>
+                                <div class="fl cont">
+                                    <p class="tit">好运9</p>
+                                    <p class="font">12次中奖机会</p>
+                                </div>
+                                <span class="line"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pro_info.html">
+                                <span class="fl ico ico8"></span>
+                                <div class="fl cont">
+                                    <p class="tit">深林探险</p>
+                                    <p class="font">最高奖励30万</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pro_info.html">
+                                <span class="fl ico ico1"></span>
+                                <div class="fl cont">
+                                    <p class="tit">桃花源寻宝</p>
+                                    <p class="font">最高奖金40万</p>
+                                </div>
+                                <span class="line"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pro_info.html">
+                                <span class="fl ico ico2"></span>
+                                <div class="fl cont">
+                                    <p class="tit">码上有奖</p>
+                                    <p class="font">15次中奖机会</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pro_info.html">
+                                <span class="fl ico ico3"></span>
+                                <div class="fl cont">
+                                    <p class="tit">好运十倍</p>
+                                    <p class="font">10次机会 40万</p>
+                                </div>
+                                <span class="line"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pro_info.html">
+                                <span class="fl ico ico4"></span>
+                                <div class="fl cont">
+                                    <p class="tit">国泰民安</p>
+                                    <p class="font">最高奖金40万</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pro_info.html">
+                                <span class="fl ico ico5"></span>
+                                <div class="fl cont">
+                                    <p class="tit">扑克风云</p>
+                                    <p class="font">12次中奖机会</p>
+                                </div>
+                                <span class="line"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pro_info.html">
+                                <span class="fl ico ico6"></span>
+                                <div class="fl cont">
+                                    <p class="tit">闪耀钻石</p>
+                                    <p class="font">最高奖励30万</p>
+                                </div>
+                            </a>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="i-wrap-sec" v-show="!nonepro">
+                <ul>
+                    <li v-for="(li,index) in prolist">
+                        <a :href="'pro_info.html?id='+li.gid">
+                            <span class="fl ico"><img :src="li.thumbnail" alt=""></span>
+                            <div class="fl cont">
+                                <p class="tit">{{li.gname.length>4?li.gname.substring(0,4)+'...':li.gname}} <span :class="'tips-status status'+li.flg"></span></p>
+                                <p class="price">¥{{li.price}}</p>
+                            </div>
+                            <span v-show="index%2==0" class="line"></span>
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <a href="pro_info.html">
+                            <span class="fl ico ico2"></span>
+                            <div class="fl cont">
+                                <p class="tit">码上有奖</p>
+                                <p class="font">15次中奖机会</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pro_info.html">
+                            <span class="fl ico ico3"></span>
+                            <div class="fl cont">
+                                <p class="tit">好运十倍</p>
+                                <p class="font">10次机会 40万</p>
+                            </div>
+                            <span class="line"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pro_info.html">
+                            <span class="fl ico ico4"></span>
+                            <div class="fl cont">
+                                <p class="tit">国泰民安</p>
+                                <p class="font">最高奖金40万</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pro_info.html">
+                            <span class="fl ico ico5"></span>
+                            <div class="fl cont">
+                                <p class="tit">扑克风云</p>
+                                <p class="font">12次中奖机会</p>
+                            </div>
+                            <span class="line"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pro_info.html">
+                            <span class="fl ico ico6"></span>
+                            <div class="fl cont">
+                                <p class="tit">闪耀钻石</p>
+                                <p class="font">最高奖励30万</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pro_info.html">
+                            <span class="fl ico ico7"></span>
+                            <div class="fl cont">
+                                <p class="tit">好运9</p>
+                                <p class="font">12次中奖机会</p>
+                            </div>
+                            <span class="line"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pro_info.html">
+                            <span class="fl ico ico8"></span>
+                            <div class="fl cont">
+                                <p class="tit">深林探险</p>
+                                <p class="font">最高奖励30万</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pro_info.html">
+                            <span class="fl ico ico1"></span>
+                            <div class="fl cont">
+                                <p class="tit">桃花源寻宝</p>
+                                <p class="font">最高奖金40万</p>
+                            </div>
+                            <span class="line"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pro_info.html">
+                            <span class="fl ico ico2"></span>
+                            <div class="fl cont">
+                                <p class="tit">码上有奖</p>
+                                <p class="font">15次中奖机会</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pro_info.html">
+                            <span class="fl ico ico3"></span>
+                            <div class="fl cont">
+                                <p class="tit">好运十倍</p>
+                                <p class="font">10次机会 40万</p>
+                            </div>
+                            <span class="line"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pro_info.html">
+                            <span class="fl ico ico4"></span>
+                            <div class="fl cont">
+                                <p class="tit">国泰民安</p>
+                                <p class="font">最高奖金40万</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pro_info.html">
+                            <span class="fl ico ico5"></span>
+                            <div class="fl cont">
+                                <p class="tit">扑克风云</p>
+                                <p class="font">12次中奖机会</p>
+                            </div>
+                            <span class="line"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pro_info.html">
+                            <span class="fl ico ico6"></span>
+                            <div class="fl cont">
+                                <p class="tit">闪耀钻石</p>
+                                <p class="font">最高奖励30万</p>
+                            </div>
+                        </a>
+                    </li> -->
+                </ul>
+                <div class="loadmore" v-show="readmore"><div class="loader"></div></div>
+            </div>
+        </div>
+        <bar now="index"></bar>
+    </div>
+    <script src="public/main.js"></script>
+    <script src="js/product.js"></script>
+</body>
+</html>
